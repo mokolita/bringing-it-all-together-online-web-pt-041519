@@ -50,9 +50,16 @@ def self.create(attributes)
     dog = DB[:conn].execute("SELECT * FROM dogs WHERE name = ? AND breed = ?", name, breed)
     if !dog.empty?
       dog_data = dog[0]
+<<<<<<< HEAD
       dog = Dog.new_from_db(dog_data)
     else
       dog = self.create(name: name, breed: breed)
+=======
+      dog = Dog.new(dog_data)
+    else
+      dog_data = dog[0] 
+      dog = self.create(dog_data)
+>>>>>>> baca299ac034fceb923e14b07cfcc37711ad7fc4
     end
     dog
   end
